@@ -1,0 +1,25 @@
+#!/bin/bash 
+#Script port scan 
+
+
+for a in $(seq 65535)
+
+  do 
+     `/bin/nc -z  10.0.0.31 $a 2> /dev/null &&  > /dev/null`
+
+if [ $? -eq 0 ]
+
+then
+  
+   echo "Porta $a Aberta"
+     
+else 
+  
+   echo "Porta $a Fechada"
+
+fi 
+
+done  
+
+
+
