@@ -1,11 +1,26 @@
 #!/bin/bash 
 #Script port scan 
+echo "[#]  DIGITE O  IP "
+read ip
+echo " "
+echo "[#]  SISTEMA OPERACIONAL IDENTIFICADO"
 
+OS=$(ping -c 1 $ip | grep -i ttl  | sed -n 's/[\:-\=]/ /gp' | awk '{print $11}')
+
+if [ $OS -lt  126 ]
+
+then 
+    echo "[#]  SISTEMA LINUX"
+else 
+    echo "[#]  SISTEMA RUINDOWS"
+fi
+
+echo "[#]  PORTAS "
 
 for a in $(seq 65535)
 
   do 
-     `/bin/nc -z  10.0.0.31 $a 2> /dev/null &&  > /dev/null`
+     `/bin/nc -z  $ip  $a > /dev/null 2> /dev/null`
 
 if [ $? -eq 0 ]
 
@@ -20,6 +35,4 @@ else
 fi 
 
 done  
-
-
 
