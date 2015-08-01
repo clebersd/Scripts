@@ -1,17 +1,14 @@
-#!/bin/bash 
-#Script port scan 
-echo "[#]  DIGITE O  IP "
-read ip
+#!/bin/bash
+#Script port scan
+echo "[#]  IP DIGITADO : $1 "
 echo " "
 echo "[#]  SISTEMA OPERACIONAL IDENTIFICADO"
+OS=$(ping -c 1 $1 | grep -i ttl  | sed -n 's/[\:-\=]/ /gp' | awk '{print $8}')
 
-OS=$(ping -c 1 $ip | grep -i ttl  | sed -n 's/[\:-\=]/ /gp' | awk '{print $11}')
-
-if [ $OS -lt  126 ]
-
-then 
+if [ $OS -lt 126 ];
+then
     echo "[#]  SISTEMA LINUX"
-else 
+else
     echo "[#]  SISTEMA RUINDOWS"
 fi
 
@@ -19,20 +16,19 @@ echo "[#]  PORTAS "
 
 for a in $(seq 65535)
 
-  do 
-     `/bin/nc -z  $ip  $a > /dev/null 2> /dev/null`
+  do
+     `/bin/nc -z  $1  $a > /dev/null 2> /dev/null`
 
 if [ $? -eq 0 ]
 
 then
-  
+
    echo "Porta $a Aberta"
-     
-else 
-  
+
+else
+
    echo "Porta $a Fechada"
 
-fi 
+fi
 
-done  
-
+done
