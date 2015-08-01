@@ -1,5 +1,6 @@
 #!/bin/bash
 #Script port scan
+#Ultima alteração 01/08/2015s
 echo "[#]  IP DIGITADO : $1 "
 echo " "
 echo "[#]  SISTEMA OPERACIONAL IDENTIFICADO"
