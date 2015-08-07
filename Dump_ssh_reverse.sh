@@ -3,13 +3,14 @@
 #
 echo "[#] SNIFFER REMOTO VIA SSH"
 
-RSA="~./ssh/id_rsa.pub"
+RSA='.ssh/id_rsa.pub'
 
-if [ -e "$RSA" ]
+if [ -e $RSA ]
   then
       echo "[#] CHAVE EXISTENTE LOCALIZADA NO DIRETORIO : $RSA"
 else
       echo "[#] ANTES DE UTILIZAR A TOOL FAVOR CRIAR SUA CHAVE DE ACESSO SSH"
+
       echo "[#] CHAVE SENDO GERADA FAVOR AGUARDAR"
 
       `/usr/bin/ssh-keygen -b 1024 -t rsa > /dev/null`
