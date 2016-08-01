@@ -1,2 +1,0 @@
-# Shell-Scripts
-Scripts aleatorios 
